@@ -1,10 +1,20 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import *
+from django.views.generic.list_detail import object_list, object_detail
+from django.views.generic.create_update import create_object
+from pastebin.models import Paste 
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
 
+display_info = {'queryset': Paste.objects.all()}
+create_info  = {'model': Paste}
+
 urlpatterns = patterns('',
+    url(r'^$', object_list, dict(display_info, allow_empty=True)),
+    url(r'^(?P<object_id>\d+)/$', object_detail, display_info),
+    url(r'^add/$', create_object, create_info),
+
     # Examples:
     # url(r'^$', 'acme_pastebin.views.home', name='home'),
     # url(r'^acme_pastebin/', include('acme_pastebin.foo.urls')),
