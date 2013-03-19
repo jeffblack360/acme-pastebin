@@ -1,5 +1,5 @@
 from django.conf.urls import *
-from django.views.generic.list_detail import object_list, object_detail
+from django.views.generic import DetailView, ListView
 from django.views.generic.create_update import create_object
 from pastebin.models import Paste 
 
