@@ -1,6 +1,6 @@
-from fabric.api import run, lcd
+from fabric.api import local
 
 def prepare_deployment():
-    run('python manage.py test acme_pastebin')
-    run('git add -p && git commit')
+    local('python manage.py test pastebin')
+    local('git add -p && git commit')
 
